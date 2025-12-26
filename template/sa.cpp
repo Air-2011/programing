@@ -123,46 +123,6 @@ void get_hg(){
         hg[rk[i]] = now;
     }
 }
-int fa[N];
-struct Data{
-    int x1, x2, y1, y2;//最大次大最小次小 
-    friend Data operator + (Data x, Data y){
-        Data ans = x;
-        if(y.x1 > ans.x1){
-            ans.x2 = ans.x1;
-            ans.x1 = y.x1;
-        }
-        else{
-            if(y.x1 > ans.x2){
-                ans.x2 = y.x1;
-            }
-        }
-        if(y.x2 > ans.x2){
-            ans.x2 = y.x2;
-        }
-        if(y.y1 < ans.y1){
-            ans.y2 = ans.y1;
-            ans.y1 = y.y1;
-        }
-        else{
-            if(y.y1 < ans.y2){
-                ans.y2 = y.y1;
-            }
-        }
-        if(y.y2 < ans.y2){
-            ans.y2 = y.y2;
-        }
-        return ans;
-    }
-}dat[N];
-int get(int x){
-    return (fa[x] == x) ? (x) : (fa[x] = get(fa[x]));
-}
-void merge(int x, int y){
-    int fx = get(x), fy = get(y);
-    if(fx == fy) return ;
-    dat[fx] = dat[fx] + dat[fy];
-}
 signed main() {
 #ifndef Air
     freopen(".in","r",stdin);
