@@ -107,6 +107,14 @@ bool check(int x, int pos){
                 if(tmp < p){
                     tmp = p;
                 }
+                else{
+                    if(rk[q.top().st] > rk[tmp.st]){
+                        int l = min(rk[q.top().st], rk[tmp.st]);
+                        int r = max(rk[q.top().st], rk[tmp.st]);
+                        int lcp = ask(l + 1, r);
+                        q.push({q.top().st + lcp, q.top().st});    
+                    }
+                }
                 q.pop();
             }
             if((Data){x, pos} < tmp){
